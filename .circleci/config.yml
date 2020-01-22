@@ -7,8 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies and build project
-          command: 'apt update && apt install -y git build-essential cmake && cmake . && sh cmake --build .'
+          name: Install dependencies
+          command: 'apt update && apt install -y git build-essential cmake'
+      - run:
+          name: Build project
+          command: 'cmake . && sh cmake --build .'
+      - run:
+          name: Update git-submodules
+          command: 'git submodule update --init --recursive'
       - sonarcloud/scan
 
 orbs:
