@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: 'apt update && apt install -y git build-essential cmake'
+          command: 'apt update && apt install -y git build-essential cmake x11'
       - run:
           name: Update git-submodules
           command: 'git submodule update --init --recursive'
